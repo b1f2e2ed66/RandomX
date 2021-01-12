@@ -28,6 +28,16 @@
 
 cmake_minimum_required(VERSION 2.8.7)
 
+#aarch64 cross build
+option(CROSS64 "arm64 cross compile" OFF)
+IF(CROSS64)
+MESSAGE("use aarch64")
+SET(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+set(CMAKE_C_COMPILER   aarch64-linux-gnu-gcc)
+SET(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} -std=c99")
+ENDIF(CROSS64)
+
 project(RandomX)
 
 #cross build
